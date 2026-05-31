@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>csMPa Predictor</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 35px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2a5298;
+            font-size: 24px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        form input:focus {
+            border-color: #2a5298;
+            outline: none;
+            box-shadow: 0 0 5px rgba(42,82,152,0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #2a5298;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>csMPa Predictor</h1>
+
+        <form action="/predict" method="post">
+            <input type="number" step="any" name="cement" required placeholder="Enter value of cement">
+            <input type="number" step="any" name="slag" required placeholder="Enter value of slag">
+            <input type="number" step="any" name="flyash" required placeholder="Enter value of flyash">
+            <input type="number" step="any" name="water" required placeholder="Enter value of water">
+            <input type="number" step="any" name="superplasticizer" required placeholder="Enter value of superplasticizer">
+            <input type="number" step="any" name="coarseaggregate" required placeholder="Enter value of coarseaggregate">
+            <input type="number" step="any" name="fineaggregate" required placeholder="Enter value of fineaggregate">
+            <input type="number" step="any" name="age" required placeholder="Enter value of age">
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="result">
+            {{ prediction }}
+        </div>
+    </div>
+
+</body>
+</html>
